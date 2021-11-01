@@ -1,0 +1,1141 @@
+<html>
+  <head>
+      <h1 style="text-align:center;font-family:verdana;">The Farm-ther</h1>
+      <img src="Assets/foreground.png" id="foreground" height="500" width="1000" style="display: none"></img>
+      <img src="Assets/shop.png" id="shop" height="500" width="1000" style="display: none"></img>
+      <img src="Assets/highlightedInv.png" id="highlightedInv" height="500" width="1000" style="display: none"></img>
+      <img src="Assets/popup.png" id="popup" height="500" width="1000" style="display: none"></img>
+
+      <img src="Assets/farmTiles/seed/grass.png" id="grass" height="500" width="1000" style="display: none"></img>
+      <img src="Assets/farmTiles/seed/wheat.png" id="wheat" height="500" width="1000" style="display: none"></img>
+      <img src="Assets/farmTiles/seed/potato.png" id="potato" height="500" width="1000" style="display: none"></img>
+      <img src="Assets/farmTiles/seed/tomato.png" id="tomato" height="500" width="1000" style="display: none"></img>
+      <img src="Assets/farmTiles/seed/watermelon.png" id="watermelon" height="500" width="1000" style="display: none"></img>
+      <img src="Assets/farmTiles/seed/pineapple.png" id="pineapple" height="500" width="1000" style="display: none"></img>
+      <img src="Assets/farmTiles/seed/diamond.png" id="diamond" height="500" width="1000" style="display: none"></img>
+
+      <img src="Assets/farmTiles/crop/grassCropT.png" id="grassCrop" height="500" width="1000" style="display: none"></img>
+      <img src="Assets/farmTiles/crop/wheatCropT.png" id="wheatCrop" height="500" width="1000" style="display: none"></img>
+      <img src="Assets/farmTiles/crop/potatoCropT.png" id="potatoCrop" height="500" width="1000" style="display: none"></img>
+      <img src="Assets/farmTiles/crop/tomatoCropT.png" id="tomatoCrop" height="500" width="1000" style="display: none"></img>
+      <img src="Assets/farmTiles/crop/watermelonCropT.png" id="watermelonCrop" height="500" width="1000" style="display: none"></img>
+      <img src="Assets/farmTiles/crop/pineappleCropT.png" id="pineappleCrop" height="500" width="1000" style="display: none"></img>
+      <img src="Assets/farmTiles/crop/diamondCropT.png" id="diamondCrop" height="500" width="1000" style="display: none"></img>
+
+
+      <img src="Assets/items/seed/grassSeed.png" id="grassSeed" height="500" width="1000" style="display: none"></img>
+      <img src="Assets/items/seed/wheatSeed.png" id="wheatSeed" height="500" width="1000" style="display: none"></img>
+      <img src="Assets/items/seed/potatoSeed.png" id="potatoSeed" height="500" width="1000" style="display: none"></img>
+      <img src="Assets/items/seed/tomatoSeed.png" id="tomatoSeed" height="500" width="1000" style="display: none"></img>
+      <img src="Assets/items/seed/watermelonSeed.png" id="watermelonSeed" height="500" width="1000" style="display: none"></img>
+      <img src="Assets/items/seed/pineappleSeed.png" id="pineappleSeed" height="500" width="1000" style="display: none"></img>
+      <img src="Assets/items/seed/diamondSeed.png" id="diamondSeed" height="500" width="1000" style="display: none"></img>
+      <img src="Assets/items/seed/splicingKit.png" id="splicingKit" height="500" width="1000" style="display: none"></img>
+
+      <img src="Assets/items/crop/grassCrop.png" id="grassSeedFin" height="500" width="1000" style="display: none"></img>
+      <img src="Assets/items/crop/wheatCrop.png" id="wheatSeedFin" height="500" width="1000" style="display: none"></img>
+      <img src="Assets/items/crop/potatoCrop.png" id="potatoSeedFin" height="500" width="1000" style="display: none"></img>
+      <img src="Assets/items/crop/tomatoCrop.png" id="tomatoSeedFin" height="500" width="1000" style="display: none"></img>
+      <img src="Assets/items/crop/watermelonCrop.png" id="watermelonSeedFin" height="500" width="1000" style="display: none"></img>
+      <img src="Assets/items/crop/pineappleCrop.png" id="pineappleSeedFin" height="500" width="1000" style="display: none"></img>
+      <img src="Assets/items/crop/diamondCrop.png" id="diamondSeedFin" height="500" width="1000" style="display: none"></img>
+
+
+
+      <style>
+        body{background-image:url("Assets/gifbackground.gif");
+          background-repeat: no-repeat;
+          background-attachment: fixed;
+          background-size: 100% 100%;}
+      </style>
+
+  </head>
+<!-- display:none; -->
+  <body>
+    <div style="top:550px; left:1px; margin:auto; position:relative; display: none">
+      <audio controls loop >
+        <audio src="Assets/audio/music.mp3" type="audio/mpeg" id="music"></audio>
+      </audio>
+      <audio src="Assets/audio/register.mp3" type="audio/mpeg" id="purchase"></audio>
+      <audio src="Assets/audio/plantingSound.mp3" type="audio/mpeg" id="planting"></audio>
+      <audio src="Assets/audio/spliceDone.mp3" type="audio/mpeg" id="spliceDone"></audio>
+      <audio src="Assets/audio/notPurchased.mp3" type="audio/mpeg" id="notPurchased"></audio>
+      <audio src="Assets/audio/roosterCall.mp3" type="audio/mpeg" id="roosterCall"></audio>
+    </div>
+
+    <button id="muteAudioOn" style="position: absolute; top:610px; left:20px; z-index: 2" onclick="muteAudioOn();" >
+    <img src="Assets/muteAudioOn.png"/>
+    </button>
+    <button id="muteAudioOff" style="position: absolute; top:610px; left:20px; z-index: 2; visibility:hidden" onclick="muteAudioOff();" >
+    <img src="Assets/muteAudioOff.png"/>
+    </button>
+    <!-- <audio src="Assets/music.mp3" style="display:none;" autoplay></audio> -->
+
+      <canvas id="canvas1" width="1000" height="500" style="border:5px solid black;
+      position:absolute; top:50px; left:250px; z-index:1">
+      </canvas>
+
+      <button id="setDif_1" style="position: absolute; top:350px; left:350px; z-index: 2" onclick="setDif_1();" >
+      <img src="Assets/easy.png"/>
+      </button>
+
+      <button id="setDif_2" style="position: absolute; top:350px; left:600px; z-index: 2" onclick="setDif_2();" >
+      <img src="Assets/medium.png"/>
+      </button>
+
+      <button id="setDif_3" style="position: absolute; top:350px; left:950px; z-index: 2" onclick="setDif_3();" >
+      <img src="Assets/hard.png"/>
+      </button>
+      <button id="toggleTutorialOn" style="position: absolute; top:450px; left:300px; z-index: 2" onclick="ToggleOnPressed();" >
+      <img src="Assets/toggleTutorialOn.png"/>
+      <button id="toggleTutorialOff" style="position: absolute; top:450px; left:300px; z-index: 2; visibility:hidden" onclick="ToggleOffPressed();" >
+      <img src="Assets/toggleTutorialOff.png"/>
+
+
+
+
+    <script>
+
+    var music = document.getElementById("music");
+    var purchase = document.getElementById("purchase");
+    var planting = document.getElementById("planting");
+    var spliceDone = document.getElementById("spliceDone");
+    var notPurchased = document.getElementById("notPurchased");
+    var roosterCall = document.getElementById("roosterCall");
+    var audioMuted=true;
+
+    function muteAudioOn() {
+      document.getElementById("muteAudioOn").style.visibility="hidden";
+      document.getElementById("muteAudioOff").style.visibility="visible";
+      music.play();
+      audioMuted=false;
+    }
+    function muteAudioOff() {
+      document.getElementById("muteAudioOff").style.visibility="hidden";
+      document.getElementById("muteAudioOn").style.visibility="visible";
+      music.pause();
+      audioMuted=true;
+    }
+
+    var canvas = document.getElementById('canvas1');
+    var ctx = canvas.getContext("2d");
+    // Create gradient
+    var width = canvas.width;
+    var height = canvas.height;
+    var grd = ctx.createRadialGradient(.5*width,.25*height,5,.5*width,.25*height,100);
+    grd.addColorStop(0,"red");
+    grd.addColorStop(1,"white");
+
+
+    // Fill with gradient
+    ctx.fillStyle = grd;
+    ctx.fillRect(0, 0, width, height);
+
+    ctx.font = "20px Verdana";
+    ctx.fillStyle = "black";
+    ctx.fillText("Start",470,130);
+
+    var foreground = document.getElementById("foreground");
+    var shop = document.getElementById("shop");
+    var highlightedInv = document.getElementById("highlightedInv");
+    var popup = document.getElementById("popup");
+
+
+    var grassTile = document.getElementById("grass");
+    var wheatTile = document.getElementById("wheat");
+    var potatoTile = document.getElementById("potato");
+    var tomatoTile = document.getElementById("tomato");
+    var watermelonTile = document.getElementById("watermelon");
+    var pineappleTile = document.getElementById("pineapple");
+    var diamondTile = document.getElementById("diamond");
+    var grassTileCrop = document.getElementById("grassCrop");
+    var wheatTileCrop = document.getElementById("wheatCrop");
+    var potatoTileCrop = document.getElementById("potatoCrop");
+    var tomatoTileCrop = document.getElementById("tomatoCrop");
+    var watermelonTileCrop = document.getElementById("watermelonCrop");
+    var pineappleTileCrop = document.getElementById("pineappleCrop");
+    var diamondTileCrop = document.getElementById("diamondCrop");
+
+    var grassSeed = document.getElementById("grassSeed");
+    var wheatSeed = document.getElementById("wheatSeed");
+    var potatoSeed = document.getElementById("potatoSeed");
+    var tomatoSeed = document.getElementById("tomatoSeed");
+    var watermelonSeed = document.getElementById("watermelonSeed");
+    var pineappleSeed = document.getElementById("pineappleSeed");
+    var diamondSeed = document.getElementById("diamondSeed");
+    var grassCrop = document.getElementById("grassSeedFin");
+    var wheatCrop = document.getElementById("wheatSeedFin");
+    var potatoCrop = document.getElementById("potatoSeedFin");
+    var tomatoCrop = document.getElementById("tomatoSeedFin");
+    var watermelonCrop = document.getElementById("watermelonSeedFin");
+    var pineappleCrop = document.getElementById("pineappleSeedFin");
+    var diamondCrop = document.getElementById("diamondSeedFin");
+
+    var startView=true
+    var farmView=false
+    var shopView=false
+    var dayIntro=false;
+    var inventoryView=false
+
+    var popups={
+      img:popup,
+      popupStart:0,
+      popupFarm:0,
+      popupMarket:0,
+      popupSplice:0,
+      popupGameOverWin:0,
+      popupGameOverLoss:0,
+      popupActive:false
+    }
+    var popupsEnabled=true
+
+    function plant(name, amount, price, value, shopX, shopY,
+       shopW, shopH, buyable, shopTextX, shopTextY, shopTextX2
+     , shopTextY2, seedTile, seedImg) {
+      this.name = name;
+      this.amount = amount;
+      this.price = price;
+      this.value = value;
+      this.shopX = shopX;
+      this.shopY = shopY;
+      this.shopW = shopW;
+      this.shopH = shopH;
+      this.buyable = buyable;
+      this.shopTextX = shopTextX;
+      this.shopTextY = shopTextY;
+      this.shopTextX2 = shopTextX2;
+      this.shopTextY2 = shopTextY2;
+      this.seedTile = seedTile;
+      this.seedImg = seedImg;
+
+    }
+    var grass_seed = new plant("Grass", 4,1,1,935,270,975,290,false,660,200,0,0,grassTile,grassSeed);
+    var wheat_seed = new plant("Wheat",0,2,2,1040,270,1080,290,false,760,200,0,0,wheatTile,wheatSeed);
+    var potato_seed = new plant("Potato",0,3,3,1150,270,1200,290,false,860,200,0,0,potatoTile,potatoSeed);
+    var tomato_seed = new plant("Tomato",0,5,4,935,340,975,360,false,665,270,0,0,tomatoTile,tomatoSeed);
+    var watermelon_seed = new plant("Watermelon",0,10,5,1040,340,1080,360,false,775,265,775,278,watermelonTile,watermelonSeed);
+    var pineapple_seed = new plant("Pineapple",0,15,6,1150,340,1200,360,false,880,265,880,278,pineappleTile,pineappleSeed);
+    var diamond_seed = new plant("Diamond",0,30,7,935,410,975,430,false,670,335,670,348,diamondTile,diamondSeed);
+    var splicing_kit = new plant("Splicing Kit",0,10,8,1040,405,1085,430,false,750,340,0,0,0,splicingKit);
+
+    var grass = new plant("Grass crop",0,2,9,0,0,0,0,false,0,0,0,0,grassTileCrop,grassCrop);
+    var wheat = new plant("Wheat crop",0,4,10,0,0,0,0,false,0,0,0,0,wheatTileCrop,wheatCrop);
+    var potato = new plant("Potato crop",0,6,11,0,0,0,0,false,0,0,0,0,potatoTileCrop,potatoCrop);
+    var tomato = new plant("Tomato crop",0,10,12,0,0,0,0,false,0,0,0,0,tomatoTileCrop,tomatoCrop);
+    var watermelon = new plant("Watermelon crop",0,15,13,0,0,0,0,false,0,0,0,0,watermelonTileCrop,watermelonCrop);
+    var pineapple = new plant("Pineapple crop",0,25,14,0,0,0,0,false,0,0,0,0,pineappleTileCrop,pineappleCrop);
+    var diamond = new plant("Diamond crop",0,50,15,0,0,0,0,false,0,0,0,0,diamondTileCrop,diamondCrop);
+
+    var sword = new plant("Super cool sword",0,0,69,1145,375,1205,431,false,855,335,850,348,0,0);
+
+    function inventorySlot(slotTextX, slotTextY, highlighted, itemName, slotX, slotY, slotW, slotH,name){
+      this.slotTextX = slotTextX;
+      this.slotTextY = slotTextY;
+      this.highlighted = highlighted;
+      this.itemName = itemName;
+      this.slotX = slotX;
+      this.slotY = slotY;
+      this.slotW = slotW;
+      this.slotH = slotH;
+      this.name = name;
+    }
+    var slot1 = new inventorySlot(5,100,false,"",255,125,460,170,"");
+    var slot2 = new inventorySlot(5,150,false,"",255,175,460,220,"");
+    var slot3 = new inventorySlot(5,200,false,"",255,225,460,270,"");
+    var slot4 = new inventorySlot(5,250,false,"",255,275,460,320,"");
+    var slot5 = new inventorySlot(5,300,false,"",255,325,460,370,"");
+    var slot6 = new inventorySlot(5,350,false,"",255,375,460,420,"");
+    var slot7 = new inventorySlot(5,400,false,"",255,425,460,470,"");
+    var slot8 = new inventorySlot(5,450,false,"",255,475,460,530,"");
+    var inventory=[slot1,slot2,slot3,slot4,slot5,slot6,slot7,slot8];
+
+    var dict = [
+      grass_seed,
+      wheat_seed,
+      potato_seed,
+      tomato_seed,
+      watermelon_seed,
+      pineapple_seed,
+      diamond_seed,
+      splicing_kit,
+      grass,
+      wheat,
+      potato,
+      tomato,
+      watermelon,
+      pineapple,
+      diamond,
+      sword
+    ]
+
+    function farmTile(tileX, tileY, tileW, tileH, seedValue){
+      this.tileX = tileX;
+      this.tileY = tileY;
+      this.tileW = tileW;
+      this.tileH = tileH;
+      this.seedValue = seedValue;
+    }
+    var tile1 = new farmTile(540,105,620,185,false);
+    var tile2 = new farmTile(630,105,710,185,false);
+    var tile3 = new farmTile(720,105,800,185,false);
+    var tile4 = new farmTile(540,200,620,280,false);
+    var tile5 = new farmTile(630,200,710,280,false);
+    var tile6 = new farmTile(720,200,800,280,false);
+    var tile7 = new farmTile(540,295,620,375,false);
+    var tile8 = new farmTile(630,295,710,375,false);
+    var tile9 = new farmTile(720,295,800,375,false);
+    var farm=[tile1,tile2,tile3,tile4,tile5,tile6,tile7,tile8,tile9]
+
+    function splicingInteraction(button1X,button1Y,buttonX, buttonY, buttonW, buttonH, value, seedValue,slotNo){
+      this.button1X = button1X;
+      this.button1Y = button1Y;
+      this.buttonX = buttonX;
+      this.buttonY = buttonY;
+      this.buttonW = buttonW;
+      this.buttonH = buttonH;
+      this.value = value;
+      this.seedValue = seedValue;
+      this.slotNo = slotNo;
+    }
+
+    var spliceInput = new splicingInteraction(540,440,535,435,595,495,0,false,1);
+    var seed1Input = new splicingInteraction(620,440,620,440,670,490,0,false,2);
+    var seed2Input = new splicingInteraction(680,440,680,440,730,490,0,false,3);
+    var seed3Output = new splicingInteraction(760,445,750,430,820,500,0,false,4);
+    var splicing = [spliceInput,seed1Input,seed2Input,seed3Output];
+
+    var seed1=0
+    var seed2=0
+
+    function spliceFunc(){
+      if(spliceInput.seedValue&&seed1Input.seedValue&&seed2Input.seedValue&&seed3Output.seedValue==false){
+        splicing.forEach(function(spl){
+          if(spl.slotNo==1){
+            spl.value=0;
+            spl.seedValue=false
+          }
+          if(spl.slotNo==2){
+            seed1=spl.value;
+            spl.value=0;
+            spl.seedValue=false
+          }
+          if(spl.slotNo==3){
+            seed2=spl.value;
+            spl.value=0;
+            spl.seedValue=false
+          }
+          if(spl.slotNo==4){
+            spl.value=seed1+seed2;
+            spl.seedValue=true;
+            start()
+          }
+        })
+      }
+    }
+
+    function sellInteraction(x ,y ,w ,h ,value ,seedValue ,slotNo){
+      this.x = x;
+      this.y = y;
+      this.w = w;
+      this.h = h;
+      this.value = value;
+      this.seedValue = seedValue;
+      this.slotNo = slotNo;
+    }
+
+    var sellquery = new sellInteraction(605,310,675,380,0,false,1);
+    var yes = new sellInteraction(715,340,755,380,0,false,2);
+    var no = new sellInteraction(760,340,800,380,0,false,3);
+    var txt = {
+      x:710,
+      y:300,
+      y2:305};
+    var sell = [sellquery, yes, no, txt];
+    var shorthandPrice=0;
+
+
+    var difficulty = "Medium"
+    ctx.fillText("Difficulty: "+difficulty,100,130);
+
+    function setDif_1(){
+    difficulty = "Easy";
+    console.log("Difficulty: "+difficulty);
+    textDif();
+    }
+
+    function setDif_2(){
+    difficulty = "Medium";
+    console.log("Difficulty: "+difficulty);
+    textDif();
+    }
+
+    function setDif_3(){
+    difficulty = "Hard";
+    console.log("Difficulty: "+difficulty);
+    textDif();
+    }
+    function ToggleOnPressed(){
+      document.getElementById("toggleTutorialOn").style.visibility="hidden";
+      document.getElementById("toggleTutorialOff").style.visibility="visible";
+      popupsEnabled=false;
+      console.log("tutorial:"+popupsEnabled);
+    }
+    function ToggleOffPressed(){
+      document.getElementById("toggleTutorialOff").style.visibility="hidden";
+      document.getElementById("toggleTutorialOn").style.visibility="visible";
+      popupsEnabled=true;
+      console.log("tutorial:"+popupsEnabled);
+    }
+
+
+    var Day=0;
+    var Money=8;
+    var cropsHarvested=0;
+    var cropsSold=0;
+    var seedsSpliced=0;
+    var moneyMade=0;
+    var gameover=false
+
+    if(gameover==false){
+    canvas.addEventListener('click', function(event) {
+      if(dayIntro==true){
+        start();
+      }
+
+      if(startView==true){
+
+        var startbutX = 650;
+        var startbutY = 70;
+        var startbutW = startbutX+200;
+        var startbutH = startbutY+200;
+          if(
+            event.x>startbutX && event.x<startbutW
+            &&
+            event.y>startbutY && event.y<startbutH
+          ){
+            console.log("Start button pressed");
+            startView=false;
+            StartDay();
+          }
+      }
+
+
+      if (farmView){
+        var leaveFarmX=970;
+        var leaveFarmY=435;
+        var leaveFarmW=leaveFarmX+220;
+        var leaveFarmH=leaveFarmY+60;
+
+        if(
+          event.x>leaveFarmX && event.x<leaveFarmW
+          &&
+          event.y>leaveFarmY && event.y<leaveFarmH&&gameover==false){
+            console.log("Leave farm pressed");
+            farmView=false;
+            marketMenu();
+            farm.forEach(function(farm){
+              dict.forEach(function(seed){
+                if(seed.value==farm.value && seed.value<8){
+                  farm.value=seed.value+8;
+                }
+              })
+            })
+    }
+
+            inventory.forEach(function(inv){
+              if (inv.highlighted){
+                farm.forEach(function(farm){
+                  if(
+                  event.x>farm.tileX && event.x<farm.tileW
+                  &&
+                  event.y>farm.tileY && event.y<farm.tileH){
+
+                    dict.forEach(function(seed){
+                      if (seed.name==inv.name){
+                        if(seed.amount>0&& farm.seedValue==false){
+                          farm.seedValue=true
+                          seed.amount=seed.amount-1;
+                          farm.value=seed.value
+                          inv.highlighted=false
+                          console.log(seed.name+" planted")
+                          if(audioMuted==false){
+                            planting.play()
+                          }
+                          if(seed.amount==0){
+                            inv.itemName =""
+                          }
+                        }
+                        start()
+                      }
+                    })
+                  }
+                })
+                splicing.forEach(function(spl){
+                  if(event.x>spl.buttonX && event.x<spl.buttonW
+                  &&
+                  event.y>spl.buttonY && event.y<spl.buttonH){
+
+                    dict.forEach(function(seed){
+                      if (seed.name==inv.name){
+                        if(seed.amount>0 && spl.seedValue==false && seed.value<8){
+                          if(spl.slotNo==2||spl.slotNo==3){
+                            window.setTimeout(function(){
+                              spl.seedValue=true;
+                              spliceFunc();
+                            },10);
+                            seed.amount=seed.amount-1;
+                            spl.value=seed.value;
+                            inv.highlighted=false;
+                            console.log(seed.name+" put into splicing")
+                            if(audioMuted==false){
+                              planting.play();
+                            }
+                            if(seed.amount==0){
+                              inv.itemName =""
+                            }
+                          }
+
+                        }
+                        else if(spl.slotNo==1){
+                          if(seed.value==8){
+                            window.setTimeout(function(){
+                              spl.seedValue=true;
+                              spliceFunc();
+                            },10);
+                            seed.amount=seed.amount-1;
+                            spl.value=seed.value;
+                            inv.highlighted=false;
+                            console.log(seed.name+" put into splicing")
+                            if(audioMuted==false){
+                              planting.play();
+                            }
+                            if(seed.amount==0){
+                              inv.itemName ="";
+                            }
+                          }
+                        }
+                        start();
+                      }
+                    })
+                  }
+                })
+              }
+              splicing.forEach(function(spl){
+                if(
+                  event.x>spl.buttonX && event.x<spl.buttonW
+                  &&
+                  event.y>spl.buttonY && event.y<spl.buttonH){
+
+                    dict.forEach(function(seed){
+                    if(spl.value==seed.value && spl.seedValue){
+                      spl.value=0;
+                      seed.amount++;
+                      spl.seedValue=false;
+                      console.log(seed.name+" taken out of splicing");
+                      start();
+
+                      if(spl.slotNo==4){
+                        if(audioMuted==false){
+                          spliceDone.play();
+                        }
+                        seedsSpliced++;
+                        if(spl.seedValue){
+                          spl.seedValue=false;
+                          spl.value=0;
+                          seed.amount++;
+                          console.log(seed.name+" created in splicing");
+                        }
+                      }
+                    }
+                  })
+                }
+              })
+            })
+            farm.forEach(function(farm){
+              if(
+                event.x>farm.tileX && event.x<farm.tileW
+                &&
+                event.y>farm.tileY && event.y<farm.tileH){
+
+                  dict.forEach(function(seed){
+                    if(farm.value==seed.value && seed.value>8 && farm.seedValue){
+                      console.log(seed.name+"harvested");
+                      farm.value=0;
+                      farm.seedValue=false;
+                      seed.amount++;
+                      cropsHarvested++;
+                      if(audioMuted==false){
+                        planting.play();
+                      }
+                      start();
+                    }
+                  })
+                }
+            })
+            if(popups.popupStart==1&&popup.popupActive){
+              popups.popupStart=2
+              popup.popupActive=false
+              window.setTimeout(start(),20)
+            }
+            if(popups.popupFarm==1&&popup.popupActive){
+              popups.popupFarm=2
+              popup.popupActive=false
+              window.setTimeout(start(),20)
+            }
+            if(popups.popupSplice==1&&popup.popupActive){
+              popups.popupSplice=2
+              popup.popupActive=false
+              window.setTimeout(start(),20)
+            }
+            if(popups.popupGameOverLoss==1&&popup.popupActive){
+              popups.popupGameOverLoss=2
+              popup.popupActive=false
+              window.setTimeout(start(),20)
+            }
+          }
+
+
+
+
+      if (shopView){
+        var endDayX=1060
+        var endDayY=100
+        var endDayW=endDayX+150
+        var endDayH=endDayY+50
+
+        if(
+          event.x>endDayX && event.x<endDayW
+          &&
+          event.y>endDayY && event.y<endDayH&&gameover==false){
+            console.log("End day button pressed");
+            StartDay()
+          }
+
+          dict.forEach(function(seed){
+            if(
+              event.x>seed.shopX && event.x<seed.shopW
+              &&
+              event.y>seed.shopY && event.y<seed.shopH){
+
+                  if (seed.buyable==true){
+                    if(audioMuted==false){
+                      purchase.play();
+                    }
+                    console.log(seed.name+" seed purchased")
+                    Money=Money-seed.price;
+                    console.log(Money)
+                    seed.amount++;
+                    marketMenu();
+                    if(seed.name=="Splicing Kit"&&popups.popupSplice==0&&popupsEnabled){//this is a tutorial and so will not occur if popupsEnabled==false
+                      popups.popupSplice++;
+                    }
+                    //make alerts for insufficient funds
+                  }else{
+                    if(audioMuted==false){
+                    notPurchased.play();
+                    }
+                  }
+                }
+          })
+          inventory.forEach(function(inv){
+            if(inv.highlighted){
+              sell.forEach(function(sell){
+                if(
+                  event.x>sell.x && event.x<sell.w
+                  &&
+                  event.y>sell.y && event.y<sell.h
+                ){
+
+                  if(sell.slotNo==1){
+                    dict.forEach(function(seed){
+                      if(seed.name==inv.name && sell.seedValue==false){
+                        console.log(seed.name+" put in sell box");
+                        seed.amount=seed.amount-1;
+                        sell.value=seed.value;
+                        sell.seedValue=true;
+                        shorthandPrice=seed.price
+                        marketMenu();
+                      }
+                    })
+                  }
+                }
+              })
+            }
+          })
+          sell.forEach(function(sell){
+            if(
+              event.x>sell.x && event.x<sell.w
+              &&
+              event.y>sell.y && event.y<sell.h
+            ){
+
+              if(sell.slotNo==2&&sellquery.seedValue){
+                console.log("Item sold");
+                sellquery.value=0;
+                sellquery.seedValue=false;
+                if(audioMuted==false){
+                  purchase.play();
+                }
+                if(sellquery.value>8){
+                  cropsSold++;
+                }
+                moneyMade=moneyMade+shorthandPrice;
+                Money=Money+shorthandPrice;
+                marketMenu();
+              }
+              else if(sell.slotNo==3&&sellquery.seedValue){
+                console.log("Sale cancelled");
+                sellquery.value=0;
+                sellquery.seedValue=false;
+                if(audioMuted==false){
+                  purchase.play();
+                }
+                dict.forEach(function(seed){
+                  if(sell.value==seed.value){
+                    seed.amount++;
+                    marketMenu();
+                  }
+                })
+              }
+            }
+          })
+          if(popups.popupMarket==1&&popup.popupActive){
+            popups.popupMarket=2
+            popup.popupActive=false
+            window.setTimeout(marketMenu(),20)
+          }
+          if(popups.popupGameOverWin==1&&popup.popupActive){
+            gameover=true;
+          }
+        }
+
+
+    if(inventoryView){
+      inventory.forEach(function(inv){
+            if(
+            event.x>inv.slotX && event.x<inv.slotW
+            &&
+            event.y>inv.slotY && event.y<inv.slotH){
+
+                if(inv.itemName==""){
+                }
+                else
+                {
+                  inventory.forEach(function(slot){
+                    slot.highlighted=false
+                  })
+                  highlightClear()
+                  inv.highlighted=true;
+                  console.log("inventory highlighted")
+                  highlight()
+
+                }
+            }
+        });
+      }
+
+
+    });
+  }
+
+
+
+    function highlightClear(){
+      if (shopView){
+        marketMenu()
+      }
+      else if(farmView){
+        start()
+      }
+    }
+
+    function highlight(){
+      inventory.forEach(function(inv){
+        if(inv.highlighted==true){
+          ctx.fillStyle='white'
+          ctx.font = "15px Verdana";
+          ctx.drawImage(highlightedInv,0,inv.slotH-100)
+          ctx.fillText(inv.itemName,inv.slotTextX,inv.slotTextY);
+        }
+      });
+    }
+
+
+
+
+
+
+
+    function textDif(){
+      ctx.font = "20px Verdana";
+      ctx.clearRect(100,100,240,40);
+      ctx.fillStyle = "white";
+      ctx.fillRect(100,100,240,40);
+      ctx.fillStyle = "black";
+      ctx.fillText("Difficulty: "+difficulty,100,130);
+    }
+
+
+    function clear(){
+      document.getElementById("setDif_1").style.visibility="hidden";
+      document.getElementById("setDif_2").style.visibility="hidden";
+      document.getElementById("setDif_3").style.visibility="hidden";
+      document.getElementById("toggleTutorialOff").style.visibility="hidden";
+      document.getElementById("toggleTutorialOn").style.visibility="hidden";
+        ctx.clearRect(0,0,width,height);
+    }
+
+
+
+
+    function allpopups(){
+
+      var popupArray=[popups.popupStart,popups.popupFarm,popups.popupSplice
+        ,popups.popupGameOverLoss,popups.popupMarket,popups.popupGameOverWin,];
+      var popupArrayFunc=[popupStart,popupFarm,popupSplice,popupGameOverLoss,popupMarket,popupGameOverWin,]
+      var j=0;
+    //start and end will occur regardless of whether popups are enabled because they
+    //are by default equal to 1 as they are vital to the story, and furthermore, not a tutorial.
+    if(farmView){
+      popupArray.forEach(function(arr1){
+          if(arr1==1&&j<4){
+            popupArrayFunc[j]();
+            j++
+          }
+          else{
+            j++
+          }
+        })
+      }
+      else if(shopView){
+        popupArray.forEach(function(arr1){
+          if(arr1==1&&j>3){
+            popupArrayFunc[j]();
+            j++
+          }
+          else{
+            j++
+          }
+        })
+      }
+    }
+
+    function popupStart(){
+      ctx.drawImage(popup,0,0);
+      window.setTimeout(function(){popup.popupActive=true,20})
+      ctx.font = "18px Verdana";
+      ctx.fillText("Welcome to The Farm-ther!",.35*width,.23*height)
+      ctx.font = "15px Verdana";
+      ctx.fillText("Your son, little bartholemue, has come to you begging",.24*width,.35*height);
+      ctx.fillText("for the newest toy all the other farmer's kids have.",.24*width,.39*height);
+      ctx.fillText("The 'super cool sword!' A light up foam blade with ",.24*width,.43*height);
+      ctx.fillText("batterys included!",.24*width,.47*height);
+      ctx.fillText("You decide that you are going to open up the old ",.24*width,.54*height);
+      ctx.fillText("crop farm on the side to pay for the sword",.24*width,.58*height);
+      ctx.fillText("before it goes out of style. You have until day 8.",.24*width,.62*height);
+        ctx.font = "10px Verdana";
+      ctx.fillText("(hopefully it helps your wife come around after forgeting the anniversary)",.24*width,.66*height);
+      //^A joke is made to give the characters more humanity and to add some substance to the story.
+        ctx.font = "14px Verdana";
+        ctx.fillText("(click anywhere to continue)",.36*width,.75*height)
+    }
+    function popupFarm(){
+        ctx.drawImage(popup,0,0);
+        window.setTimeout(function(){popup.popupActive=true,20})
+        ctx.font = "15px Verdana"
+        ctx.fillText("Welcome to your farm!",.24*width,.26*height);
+        ctx.fillText("Here is where you will grow and splice seeds. Clicking",.24*width,.3*height);
+        ctx.fillText("on your inventory will highlight a slot so long as it",.24*width,.34*height);
+        ctx.fillText("has an item in it. To interact with your farm, click on",.24*width,.38*height);
+        ctx.fillText("an item and then where you would like it to interact with.",.24*width,.42*height);
+        ctx.fillText("For now, try planting some grass seeds and pressing the ",.24*width,.46*height);
+        ctx.fillText("'Leave Farm' button. When you come back the next day,",.24*width,.5*height);
+        ctx.fillText("you will be able to harvest them.",.24*width,.54*height);
+        ctx.font = "14px Verdana";
+        ctx.fillText("(click anywhere to continue)",.36*width,.75*height)
+    }
+    function popupMarket(){
+      ctx.drawImage(popup,0,0);
+      window.setTimeout(function(){popup.popupActive=true,20})
+      ctx.font = "15px Verdana"
+      ctx.fillStyle='black'
+      ctx.fillText("Welcome to your farm!",.24*width,.26*height);
+      ctx.fillText("Here you can buy and sell seeds, crop, splicing kits",.24*width,.3*height);
+      ctx.fillText("and most importantly, the super cool sword!",.24*width,.34*height);
+
+      ctx.fillText("You can sell your crops and items by selecting them,",.24*width,.42*height);
+      ctx.fillText("before selecting the grey 'sale box'. You dont have ",.24*width,.46*height);
+      ctx.fillText("anything to sell now, so just keep that in mind!",.24*width,.5*height);
+
+      ctx.fillText("You can also buy items by simply clicking on the item",.24*width,.58*height);
+      ctx.fillText("in the wagon provided that you have sufficient funds,",.24*width,.62*height);
+      ctx.fillText("which is indicated by red or green text.",.24*width,.66*height);
+      ctx.font = "14px Verdana";
+      ctx.fillText("(click anywhere to continue)",.36*width,.75*height)
+    }
+    function popupSplice(){
+      ctx.drawImage(popup,0,0);
+      window.setTimeout(function(){popup.popupActive=true,20})
+      ctx.font = "15px Verdana"
+      ctx.fillStyle='black'
+      ctx.fillText("Congratulations on getting your first splicing kit!",.24*width,.26*height);
+      ctx.fillText("On use, it will combine the value of two seeds,",.24*width,.3*height);
+      ctx.fillText("creating a more valuable seed.",.24*width,.34*height);
+
+      ctx.fillText("When using, place any two seeds in the designated slots",.24*width,.42*height);
+      ctx.fillText("in the splicing box and the splicing kit in the left slot",.24*width,.46*height);
+      ctx.fillText("and a new seed will be produced on the right side.",.24*width,.5*height);
+      ctx.font = "14px Verdana";
+      ctx.fillText("(click anywhere to continue)",.36*width,.75*height)
+    }
+    function popupGameOverWin(){
+      ctx.drawImage(popup,0,0);
+      window.setTimeout(function(){popup.popupActive=true,20})
+      ctx.font = "15px Verdana"
+      ctx.fillStyle='black'
+      ctx.fillText("Congratulations! you got the sword for your son before",.24*width,.26*height);
+      ctx.fillText("it goes out of style!",.24*width,.3*height);
+      ctx.fillText("He is so exited to go and play with his friends!",.24*width,.34*height);
+      ctx.font = "10px Verdana"
+      ctx.fillText("(and your wife seems to have forgiven you)",.24*width,.38*height);
+      ctx.font = "13px Verdana";
+      ctx.fillText("Feel free to use your timemachine (the f5 button)",.33*width,.66*height)
+      ctx.fillText("and try again with a harder difficulty.",.33*width,.7*height)
+    }
+    function popupGameOverLoss(){
+      ctx.drawImage(popup,0,0);
+      window.setTimeout(function(){popup.popupActive=true,20})
+      ctx.font = "15px Verdana"
+      ctx.fillStyle='black'
+      ctx.fillText("Oh drat! you didnt get the sword in time for your son.",.24*width,.3*height);
+      ctx.fillText("Do not worry though, you can always use the ",.24*width,.34*height);
+      ctx.fillText("time machine button (f5)",.24*width,.38*height);
+    }
+
+
+    // filter dict of each seed to output the Array of seeds which are elidible to be shown in inventory
+    // Enter a loop of inventory slots for which; each itterration enters another for loop which;
+      //Recurses through the Array of elidgble seeds
+
+    // filter dict of each seed to output the Array of seeds which are elidible to be shown in inventory
+    // Then, loop through this filtered list. And for each iterration
+      var shorthanditemlength;
+    function drawInventory(){
+        inventory.forEach(function(inv){
+          inv.itemName=""
+        })
+
+      ctx.font = "15px Verdana";
+        inventoryView=true
+        var itemsInStock = dict.filter(function(seed){ //re-initiating this variable everytime
+        return seed.amount>0;
+                                    //the function is called ensures that
+      })                                             //the the array is organized in order of most to least valuable
+        ctx.fillStyle="white"
+        var i=0;
+        itemsInStock.forEach(function(item){
+        if(item.value<8){
+          inventory[i].itemName = item.name+" seed x"+item.amount;
+        }
+        else if(item.value>7){
+          inventory[i].itemName = item.name+" x"+item.amount;
+        }
+        inventory[i].name=item.name;
+        i++;
+      })
+       inventory.forEach(function(inv){
+         ctx.fillText(inv.itemName,inv.slotTextX,inv.slotTextY);
+       })
+    }
+
+
+
+    function StartDay(){
+      dayIntro=true;
+      shopView=false;
+      inventoryView=false;
+      Day++;
+      clear();
+      ctx.fillStyle ="black";
+      ctx.fillRect(0,0,width,height);
+      ctx.font = "40px Verdana"
+      ctx.fillStyle="white"
+      ctx.fillText("Day "+Day,.45*width,.5*height)
+      if(audioMuted==false){
+        roosterCall.volume = 0.4;
+        roosterCall.play()
+      }
+      if(Day==1){
+        ctx.font = "15px Verdana"
+        ctx.fillText("(Click anywhere to continue)",.4*width,.6*height)
+        if(difficulty=="Easy"){
+          sword.price=100;
+        }
+        else if(difficulty=="Hard"){
+          sword.price=200;
+        }
+        else if(difficulty=="Medium"){
+          sword.price=150;
+        }
+      }
+    }
+
+
+
+    function start(){
+      farmView=true;
+      if(Day>7){
+        popups.popupGameOverLoss=1
+        gameover=true;
+      }
+      if(popups.popupStart==0){
+        popups.popupStart=1;
+      }
+      if(popups.popupStart==2&&popupsEnabled&&popups.popupFarm==0){
+        popups.popupFarm=1;
+      }
+      ctx.clearRect(0,0,width,height);
+        spliceFunc()
+      dayIntro=false;
+      ctx.font = "15px Verdana";
+      ctx.drawImage(foreground,0,0);
+      drawInventory();
+      ctx.fillStyle="black"
+      ctx.fillText("Day: "+Day,710,90);
+      ctx.fillText("Money: $"+Money,710,110);
+      ctx.fillText("Crops Harvested:"+cropsHarvested,710,150);//fun stats that dont effect gameplay
+      ctx.fillText("Crops Sold:"+cropsSold,710,170);
+      ctx.fillText("Seeds Spliced:"+seedsSpliced,710,190);
+      ctx.fillText("Money Made: $"+moneyMade,710,210);
+      farm.forEach(function(farm){
+        dict.forEach(function(seed){
+          if(farm.value==seed.value){
+            ctx.drawImage(seed.seedTile,farm.tileX-255,farm.tileY-55)
+            if(seed.value>8){
+            }
+          }
+        })
+      })
+      splicing.forEach(function(spl){
+        dict.forEach(function(seed){
+          if(spl.value==seed.value){
+            ctx.drawImage(seed.seedImg,spl.button1X-240,spl.button1Y-40)
+          }
+        })
+      })
+      window.setTimeout(allpopups(),10)
+    }
+
+
+    function marketMenu(){
+      if(sword.amount>0){
+        gameOver();
+      }
+      if(popupsEnabled&&popups.popupMarket==0){
+        popups.popupMarket=1;
+      }
+      shopView=true;
+      ctx.clearRect(0,0,width,height);
+      ctx.drawImage(shop,0,0);
+      ctx.font = "15px Verdana";
+      ctx.fillStyle="black"
+      ctx.fillText("Money: $"+Money,820,140);
+      drawInventory();
+      buyText();
+      allpopups();
+      sell.forEach(function(sell){
+        if(sell.slotNo==1){
+          yes.value=sell.value;
+          no.value=sell.value;
+        }
+        dict.forEach(function(seed){
+          if(sell.value==seed.value&&sell.slotNo==1){
+            ctx.fillStyle="white"
+            if(seed.value<9){
+              ctx.drawImage(seed.seedImg,sell.x-230,sell.y-30)
+            }
+            else if(seed.value>8){
+
+              if(seed.name=="Watermelon crop"){
+                ctx.drawImage(seed.seedImg,sell.x-240,sell.y-50);
+              }
+              else if(seed.name=="Pineapple crop"){
+                ctx.drawImage(seed.seedImg,sell.x-240,sell.y-70);
+              }
+              else{
+                ctx.drawImage(seed.seedImg,sell.x-235,sell.y-45);
+              }
+            }
+
+            if(seed.value>7){
+              if(seed.name=="Watermelon crop"){
+                ctx.fillText("Watermelon",txt.x-240,txt.y-42);
+                ctx.fillText("crop $"+seed.price,txt.x-240,txt.y2-35);
+              }
+              else if(seed.name=="Pineapple crop"){
+              ctx.fillText("Pineapple",txt.x-240,txt.y-42);
+              ctx.fillText("crop $"+seed.price,txt.x-240,txt.y2-35);
+              }
+              else if(seed.name=="Diamond crop"){
+                ctx.fillText("Diamond",txt.x-240,txt.y-42);
+                ctx.fillText("crop $"+seed.price,txt.x-240,txt.y2-35);
+              }
+              else{
+                ctx.fillText(seed.name,txt.x-240,txt.y-42);
+                ctx.fillText("$"+seed.price,txt.x-240,txt.y2-35);
+              }
+            }
+            else{
+              ctx.fillText(seed.name,txt.x-240,txt.y-42);
+              ctx.fillText("seed $"+seed.price,txt.x-240,txt.y2-35);
+            }
+          }
+        })
+      })
+    }
+
+
+    function buyText(){
+      ctx.fillStyle="white"
+      ctx.font = "12px Verdana";
+
+      dict.forEach(function(seed){
+          if(seed.price>Money){
+            ctx.fillStyle="red";
+            seed.buyable=false;
+          }
+          else{
+            ctx.fillStyle="green";
+            seed.buyable=true;
+          }
+
+          if(seed.name=="Watermelon"||seed.name=="Pineapple"||seed.name=="Diamond"){
+            ctx.fillText(seed.name,seed.shopTextX,seed.shopTextY);
+            ctx.fillText("seed $"+seed.price,seed.shopTextX2,seed.shopTextY2);
+
+          }
+          else if (seed.name=="Splicing Kit") {
+            ctx.fillText(seed.name+" $"+seed.price,seed.shopTextX,seed.shopTextY);
+          }
+          else if(seed.value<8){
+            ctx.fillText(seed.name+" seed $"+seed.price,seed.shopTextX,seed.shopTextY);
+          }
+          else if(seed.name=="Super cool sword"){
+            ctx.fillText("Super cool",seed.shopTextX,seed.shopTextY);
+            ctx.fillText("sword $"+seed.price,seed.shopTextX2,seed.shopTextY2);
+          }
+        }
+      );
+    }
+
+    function gameOver(){
+      console.log("game over")
+      if(popups.popupGameOverWin==0){
+        popups.popupGameOverWin=1;
+        gameover=true
+      }
+    }
+
+    </script>
+  </body>
+</html>

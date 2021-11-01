@@ -1,0 +1,10 @@
+Idea number 1
+Beginning premise: your son wants to get a cool toy sword so he can play with his friends, and you , a farmer decides to work overtime by selling extra crops, you have 7 days to buy the sword for him, if you don’t have the money in time, game over
+The difficulty settings of the game will determine how expensive the sword is
+
+Start with basic seed and minimal amount of money, you are instructed to lay the seed before ending your planting turn and going to the market at the market, you are able to buy seeds, splicing kits, and fertilizer, you are instructed to buy a splicing kit and a couple seeds. You are then able to press the “end day” button, fading out to black
+The text day 2, 8:00 AM shows in the black before being shown your farm once again, you then are able to see that the seeds you planted the previous day have grown into grass, you are then able to harvest the grass before being instructed to use the splicing tool and placing two different seeds In you then go to market and sell your grass, you then buy a slightly better seed for a different crop before selecting end of day
+You then spend the rest of the game splicing crops and buying seeds until you are able to buy the most expensive crop
+
+ Idea number 2
+A clicking or button pressing game driven towards cookie clicker, where once you deal enough damage, you are able to collect items to make your team more powerful 
